@@ -10,7 +10,7 @@ public class PlayerScript : MonoBehaviour
     private GameObject camera;
     public GameObject bullet;
     private GameObject firePoint;
-    public int clickForce = 100;
+    private float thrust = 200.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +51,7 @@ public class PlayerScript : MonoBehaviour
                 var hitPoint = ray.GetPoint(enter);
                 var mouseDir = hitPoint - gameObject.transform.position;
                 mouseDir = mouseDir.normalized;
-                bulletCopy.GetComponent<Rigidbody>().AddForce(mouseDir * clickForce);
+                bulletCopy.GetComponent<Rigidbody>().AddForce(mouseDir * thrust);
             }
         }
     }
