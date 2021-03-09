@@ -1,0 +1,5 @@
+  -Added Weapon
+  -Moved firepoint so it sits right where the weapon's barrel's opening  should be/is.
+  -Bullets now exit the weapon, as they should
+  -The weapon follows the mouse direction
+  -The player loses if enemies touch the player's weapon
