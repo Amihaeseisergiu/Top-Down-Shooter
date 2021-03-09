@@ -1,0 +1,6 @@
+Am adaugat obiectele "Enemy" si "Bullet".
+Inamicul urmareste playerul imediat ce incepe jocul si daca il atinge jucatorul pierde.
+Gloantele pot fi folosite de catre jucator pentru a se distruge inamicii.
+Ele sunt trase cu click stanga si se duc in directia cursorului.
+Daca un glonte atinge un inimic, inamicul va disparea. 
+Gloantele sunt distruse automat la 3 secunde dupa tragere.
