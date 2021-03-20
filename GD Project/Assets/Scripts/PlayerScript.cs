@@ -17,6 +17,8 @@ public class PlayerScript : MonoBehaviour
     private Slider slider;
     private float health;
     private float maxHealth;
+    private float nextHit;
+    private bool collided;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,7 @@ public class PlayerScript : MonoBehaviour
         firePoint = gameObject.transform.GetChild(0).gameObject;
         health = 100;
         maxHealth = 100;
+        nextHit = Time.time;
         healthBar = Instantiate(healthBarPrefab);
         slider = (Slider)GameObject.FindObjectsOfType(typeof(Slider))[0];
         FollowHealthBar();
@@ -65,6 +68,18 @@ public class PlayerScript : MonoBehaviour
                 bulletCopy.GetComponent<Rigidbody>().AddForce(mouseDir * thrust);
             }
         }
+
+        //Continuous enemy hits
+        if (collided && nextHit <= Time.time)
+        {
+            CalculateHealth();
+            nextHit = Time.time + 1.0f;
+            if (health <= 0)
+            {
+                Destroy(healthBar);
+                Destroy(gameObject);
+            }
+        }
     }
 
     void FixedUpdate()
@@ -81,16 +96,19 @@ public class PlayerScript : MonoBehaviour
         healthBar.transform.position = pos;
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnCollisionEnter(Collision other)
     {
-        if (col.gameObject.name == "Enemy(Clone)")
+        if (other.gameObject.name == "Enemy(Clone)")
         {
-            CalculateHealth();
-            if (health <= 0)
-            {
-                Destroy(healthBar);
-                Destroy(gameObject);
-            }
+            collided = true;
+        }
+    }
+
+    void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.name == "Enemy(Clone)")
+        {
+            collided = false;
         }
     }
 

@@ -12,6 +12,7 @@ public class EnemyScript : MonoBehaviour
     private float health;
     private float maxHealth;
     private Slider slider;
+    public GameObject impactParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class EnemyScript : MonoBehaviour
         health = 100;
         maxHealth = 100;
         playerTransform = GameObject.Find("Player").GetComponent<Transform>();
+        impactParticle = GameObject.Find("Blood");
         healthBar = Instantiate(healthBarPrefab);
         slider = (Slider)GameObject.FindObjectsOfType(typeof(Slider))[0];
         FollowHealthBar();
@@ -47,9 +49,9 @@ public class EnemyScript : MonoBehaviour
         healthBar.transform.position = pos;
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnCollisionEnter(Collision other)
     {
-        if (col.gameObject.name == "Bullet(Clone)")
+        if (other.gameObject.name == "Bullet(Clone)")
         {
             CalculateHealth();
             if (health <= 0)
@@ -57,6 +59,12 @@ public class EnemyScript : MonoBehaviour
                 Destroy(healthBar);
                 Destroy(gameObject);
             }
+
+            Vector3 moveDirection = gameObject.GetComponent<Rigidbody>().transform.position - playerTransform.position;
+            gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * 200f);
+
+            ContactPoint contact = other.contacts[0];
+            Instantiate(impactParticle, contact.point, Quaternion.FromToRotation(Vector3.up, contact.normal));
         }
     }
 
