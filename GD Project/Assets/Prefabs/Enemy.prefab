@@ -123,3 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8522859fba06341b7fdeb214978ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBarPrefab: {fileID: 2900534342853049521, guid: 544be44f12918774398933380e98ab16,
+    type: 3}

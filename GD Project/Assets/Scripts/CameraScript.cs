@@ -14,12 +14,12 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //horizontalInput = Input.GetAxis("Horizontal");
-        //verticalInput = Input.GetAxis("Vertical");
-        //transform.position = transform.position + new Vector3(horizontalInput * movementSpeed * Time.deltaTime, 0f, verticalInput * movementSpeed * Time.deltaTime);
-        transform.position = playerTransform.position;
-        Vector3 pos = transform.position;
-        pos.y = 15;
-        transform.position = pos;
+        if (playerTransform != null)
+        {
+            transform.position = playerTransform.position;
+            Vector3 pos = transform.position;
+            pos.y = 20;
+            transform.position = pos;
+        }
     }
 }

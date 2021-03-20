@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -11,12 +12,22 @@ public class PlayerScript : MonoBehaviour
     public GameObject bullet;
     private GameObject firePoint;
     private float thrust = 200.0f;
+    public GameObject healthBarPrefab;
+    private GameObject healthBar;
+    private Slider slider;
+    private float health;
+    private float maxHealth;
 
     // Start is called before the first frame update
     void Start()
     {
         // Get bullet child
         firePoint = gameObject.transform.GetChild(0).gameObject;
+        health = 100;
+        maxHealth = 100;
+        healthBar = Instantiate(healthBarPrefab);
+        slider = (Slider)GameObject.FindObjectsOfType(typeof(Slider))[0];
+        FollowHealthBar();
     }
 
     // Update is called once per frame
@@ -59,5 +70,33 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate()
     {
         transform.position = transform.position + new Vector3(horizontalInput * movementSpeed * Time.deltaTime, 0f, verticalInput * movementSpeed * Time.deltaTime);
+        FollowHealthBar();
+    }
+
+    void FollowHealthBar()
+    {
+        healthBar.transform.position = transform.position;
+        Vector3 pos = transform.position;
+        pos.z = pos.z + 1.5f;
+        healthBar.transform.position = pos;
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "Enemy(Clone)")
+        {
+            CalculateHealth();
+            if (health <= 0)
+            {
+                Destroy(healthBar);
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    void CalculateHealth()
+    {
+        health = health - 25;
+        slider.value = health / maxHealth;
     }
 }

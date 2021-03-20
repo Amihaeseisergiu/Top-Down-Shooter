@@ -17,4 +17,8 @@ public class BulletScript : MonoBehaviour
     {
         Destroy(gameObject, delay);
     }
+    void OnCollisionEnter(Collision col)
+    {
+        Destroy(gameObject);
+    }
 }
