@@ -1,0 +1,3 @@
+-Added obstacles on the map
+-The player can't get somewhere if there's an obstacle on his way
+-The same is true for both bullets and enemies as well 
