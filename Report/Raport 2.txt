@@ -1,4 +1,0 @@
-Enemies now spawn at random locations, every x seconds, but not too close to the player.
-Enemies and the player now have hp bars.
-Enemies lose hp everytime they are touched by a bullet.
-The player loses hp everytime an enemy touches him.
