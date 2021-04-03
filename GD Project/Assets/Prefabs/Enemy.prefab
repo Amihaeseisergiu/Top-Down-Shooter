@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4556951718203167662}
   - component: {fileID: 5908187320636847979}
   - component: {fileID: 6597893778849013936}
+  - component: {fileID: -9051889385446805520}
+  - component: {fileID: -4763630343904538050}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -104,7 +106,7 @@ Rigidbody:
   m_GameObject: {fileID: 8160773326282768912}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -125,3 +127,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarPrefab: {fileID: 2900534342853049521, guid: 544be44f12918774398933380e98ab16,
     type: 3}
+  impactParticle: {fileID: 0}
+--- !u!114 &-9051889385446805520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8160773326282768912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &-4763630343904538050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8160773326282768912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a57aad603694f4a9212f6447fae647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1000
+  nextWaypointDistance: 3

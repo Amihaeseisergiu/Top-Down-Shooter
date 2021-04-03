@@ -34,10 +34,6 @@ public class EnemyScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (playerTransform != null)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, movementSpeed);
-        }
         FollowHealthBar();
     }
 

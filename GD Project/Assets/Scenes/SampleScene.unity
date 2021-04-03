@@ -4875,6 +4875,124 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &141194395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 141194397}
+  - component: {fileID: 141194396}
+  m_Layer: 0
+  m_Name: PathFinding
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &141194396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141194395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  data:
+    dataString: UEsDBBQAAAgIAAAQIezGHmm/RgIAAPEEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGFVE1z2jAQ/SuMzk0G3JTGvbWGkB5IMiGdXHxZrDXWIEsefQRIhv/elWywSw49WX7v7erth/3BhLINFk6bhRF8qTmyHyMWzuzLqCfvcQ8brVbiHU+aV8FdFUQQNc/ghCZ8EsKsrtEZUfxUGxnEYwK9EqU29ZxvMNPWWYJLkBaJMtqFaEXQx4jtu4BD93wPz9GRTgUqh+Z/Kq8KCXWDPLjtxZPxSU6nKFRUSacJrgstpbCdDeYOTSwzg8Z6KoIEXACVFQ18vU4IqFBsKkevyTD8sSwtus6WgcNMGOpPm5f90m3TarDb1tsbSB9uSr5No6s26fITfzWJdGl0fX+6t63JVaLYPsOhAOsGXR3Cs976JLZoB3ILa4mvFaoHvTDaK06kMz6EeovJbJDqXFtWYbHtda3XC9A3nyc06Sd0jNXvMynqdUCub1pgJXXseBpi0NBsfpPhuBe2y0RoMPHH4gtshgvUEXfCWEdUd6EK7tbamyBl89izUIx3mTYKI9x5blCBdIcnSuMuR3jBDa69YO4gfCrd5R13+gIuQiLc68fjC+pJ787DspXeLdFWj95JobA3HYgH6lOmlWo3bNiTU9jKmxKKQdjGC/7varGyRH6bACTTtEjLdHyVpt9vp2UJCU+nOB3fsLh7QlGdIJ9ao117aGqqT65oz05/kNHCQBO3nRvYLcR7rQctF6rUq8Igqsc2w9k4GrqEvks+54IatELnhIrzZh85k7rYIs/PifJY6XzvDOR9lpw14k27gOQsi/+NnB3Z8S9QSwMEFAAACAgAABAh7IcO+dBtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTVUVBKL0osyCgGihiCOKWZKSB2tFJaWmqKhVFiopGZZbJlmqWBrqWluYVZWlqiUYqlWaqZgYlSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAABAh7MYeab9GAgAA8QQAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAABAh7IcO+dBtAAAAeAAAAAkAJAAAAAAAAAAAAAAAkwIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABLAwAAAAA=
+    upgradeData: 
+    file_cachedStartup: {fileID: 0}
+    data_cachedStartup: 
+    cacheStartup: 0
+  showNavGraphs: 1
+  showUnwalkableNodes: 1
+  debugMode: 0
+  debugFloor: 0
+  debugRoof: 1
+  manualDebugFloorRoof: 0
+  showSearchTree: 0
+  unwalkableNodeDebugSize: 0.3
+  logPathResults: 1
+  maxNearestNodeDistance: 100
+  scanOnStartup: 1
+  fullGetNearestSearch: 0
+  prioritizeGraphs: 0
+  prioritizeGraphsLimit: 1
+  colorSettings:
+    _SolidColor: {r: 0.11764706, g: 0.4, b: 0.7882353, a: 0.9}
+    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
+    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
+    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
+    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
+    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
+    _AreaColors:
+    - {r: 0, g: 0, b: 0, a: 0}
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  heuristic: 2
+  heuristicScale: 1
+  threadCount: 1
+  maxFrameTime: 1
+  batchGraphUpdates: 0
+  graphUpdateBatchingInterval: 0.2
+  euclideanEmbedding:
+    mode: 0
+    seed: 0
+    pivotPointRoot: {fileID: 0}
+    spreadOutCount: 1
+  showGraphs: 1
+--- !u!4 &141194397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141194395}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &447649833
 GameObject:
   m_ObjectHideFlags: 0
@@ -4887,7 +5005,7 @@ GameObject:
   - component: {fileID: 447649836}
   - component: {fileID: 447649835}
   - component: {fileID: 447649834}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4980,7 +5098,7 @@ GameObject:
   - component: {fileID: 577003814}
   - component: {fileID: 577003813}
   - component: {fileID: 577003812}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5073,7 +5191,7 @@ GameObject:
   - component: {fileID: 690605236}
   - component: {fileID: 690605235}
   - component: {fileID: 690605234}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5258,7 +5376,7 @@ GameObject:
   - component: {fileID: 710919149}
   - component: {fileID: 710919148}
   - component: {fileID: 710919147}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5351,7 +5469,7 @@ GameObject:
   - component: {fileID: 714186229}
   - component: {fileID: 714186228}
   - component: {fileID: 714186227}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5444,7 +5562,7 @@ GameObject:
   - component: {fileID: 728341674}
   - component: {fileID: 728341673}
   - component: {fileID: 728341672}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5537,7 +5655,7 @@ GameObject:
   - component: {fileID: 730459814}
   - component: {fileID: 730459813}
   - component: {fileID: 730459812}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5630,7 +5748,7 @@ GameObject:
   - component: {fileID: 754802000}
   - component: {fileID: 754801999}
   - component: {fileID: 754801998}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5723,7 +5841,7 @@ GameObject:
   - component: {fileID: 765856007}
   - component: {fileID: 765856006}
   - component: {fileID: 765856005}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5909,7 +6027,7 @@ GameObject:
   - component: {fileID: 897818080}
   - component: {fileID: 897818079}
   - component: {fileID: 897818078}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6002,7 +6120,7 @@ GameObject:
   - component: {fileID: 911245574}
   - component: {fileID: 911245573}
   - component: {fileID: 911245572}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6299,7 +6417,7 @@ GameObject:
   - component: {fileID: 1050211315}
   - component: {fileID: 1050211314}
   - component: {fileID: 1050211313}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6392,7 +6510,7 @@ GameObject:
   - component: {fileID: 1215843438}
   - component: {fileID: 1215843437}
   - component: {fileID: 1215843436}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6485,7 +6603,7 @@ GameObject:
   - component: {fileID: 1219960628}
   - component: {fileID: 1219960627}
   - component: {fileID: 1219960626}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6578,7 +6696,7 @@ GameObject:
   - component: {fileID: 1276032490}
   - component: {fileID: 1276032489}
   - component: {fileID: 1276032488}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6671,7 +6789,7 @@ GameObject:
   - component: {fileID: 1324385174}
   - component: {fileID: 1324385173}
   - component: {fileID: 1324385172}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6764,7 +6882,7 @@ GameObject:
   - component: {fileID: 1341178710}
   - component: {fileID: 1341178709}
   - component: {fileID: 1341178708}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6887,7 +7005,7 @@ GameObject:
   - component: {fileID: 1447431594}
   - component: {fileID: 1447431593}
   - component: {fileID: 1447431592}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11791,7 +11909,7 @@ GameObject:
   - component: {fileID: 1724457275}
   - component: {fileID: 1724457274}
   - component: {fileID: 1724457273}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11884,7 +12002,7 @@ GameObject:
   - component: {fileID: 1749784255}
   - component: {fileID: 1749784254}
   - component: {fileID: 1749784253}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11977,7 +12095,7 @@ GameObject:
   - component: {fileID: 1802496823}
   - component: {fileID: 1802496822}
   - component: {fileID: 1802496821}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12070,7 +12188,7 @@ GameObject:
   - component: {fileID: 1830014943}
   - component: {fileID: 1830014942}
   - component: {fileID: 1830014941}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12291,7 +12409,7 @@ GameObject:
   - component: {fileID: 2134428113}
   - component: {fileID: 2134428112}
   - component: {fileID: 2134428111}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacol (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
