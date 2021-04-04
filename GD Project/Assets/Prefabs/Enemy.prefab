@@ -128,6 +128,11 @@ MonoBehaviour:
   healthBarPrefab: {fileID: 2900534342853049521, guid: 544be44f12918774398933380e98ab16,
     type: 3}
   impactParticle: {fileID: 0}
+  health: 0
+  maxHealth: 0
+  damage: 0
+  speed: 0
+  isDestroyed: 0
 --- !u!114 &-9051889385446805520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,5 +173,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a57aad603694f4a9212f6447fae647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1000
   nextWaypointDistance: 3
