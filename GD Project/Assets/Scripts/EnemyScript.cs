@@ -79,7 +79,7 @@ public class EnemyScript : MonoBehaviour
             ContactPoint contact = other.contacts[0];
             Instantiate(impactParticle, contact.point, Quaternion.FromToRotation(Vector3.up, contact.normal));
         }
-        else if(other.gameObject.name == "Enemy(Clone)" && !other.gameObject.GetComponent<EnemyScript>().isDestroyed && other.gameObject.GetComponent<EnemyScript>().randChosen > 0.8f)
+        else if(other.gameObject.name == "Enemy(Clone)" && !other.gameObject.GetComponent<EnemyScript>().isDestroyed && other.gameObject.GetComponent<EnemyScript>().randChosen > 0.8f && randChosen > 0.8f)
         {
             Vector3 newSize = other.gameObject.transform.localScale + gameObject.transform.localScale;
             if (newSize.x < 5.0f && newSize.y < 5.0f && newSize.z < 5.0f)
