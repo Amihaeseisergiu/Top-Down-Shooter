@@ -34,8 +34,8 @@ public class PlayerScript : MonoBehaviour
         maxHealth = 100;
         movementSpeed = 10f;
         damage = 25;
-        ammo = 30;
-        restAmmo = 120;
+        ammo = 60;
+        restAmmo = 240;
 
         // Get bullet child
         firePoint = gameObject.transform.GetChild(0).gameObject;
@@ -85,8 +85,8 @@ public class PlayerScript : MonoBehaviour
                 {
                     isReloading = true;
                     Invoke("ResetReload", 2);
-                    ammo += 30;
-                    restAmmo -= 30;
+                    ammo += 60;
+                    restAmmo -= 60;
                 }
             }
         }
@@ -130,6 +130,18 @@ public class PlayerScript : MonoBehaviour
         {
             enemyDamage = other.gameObject.GetComponent<EnemyScript>().damage;
             collided = true;
+        } else if (other.gameObject.name == "Ammo(Clone)")
+        {
+            Destroy(other.gameObject);
+            restAmmo += 120;
+            ammoDisplay.text = ammo.ToString() + "/" + restAmmo.ToString();
+            if (ammo == 0)
+            {
+                isReloading = true;
+                Invoke("ResetReload", 2);
+                ammo += 60;
+                restAmmo -= 60;
+            }
         }
     }
 

@@ -5155,7 +5155,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 30/120
+  m_Text: 60/240
 --- !u!222 &543140818
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6482,6 +6482,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 8160773326282768912, guid: 136519db6bb30174a81c14c22bbe33b8, type: 3}
+  ammoSprite: {fileID: 5481396961338269318, guid: 06f185ca8c0f6b14ab3eb1e61538e354,
+    type: 3}
 --- !u!64 &993291521
 MeshCollider:
   m_ObjectHideFlags: 0
