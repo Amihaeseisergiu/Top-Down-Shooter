@@ -7,8 +7,6 @@ public class EnemyAI : MonoBehaviour
 {
 
     private Transform player;
-
-    public float speed = 200f;
     public float nextWaypointDistance = 3f;
 
     Path path;
@@ -30,8 +28,17 @@ public class EnemyAI : MonoBehaviour
 
     void UpdatePath()
     {
-        if (seeker.IsDone())
-            seeker.StartPath(rb.position, player.position, OnPathComplete);
+        float dist = Vector3.Distance(rb.position, player.position);
+        if(dist <= 7.5f)
+        {
+            if (seeker.IsDone())
+                seeker.StartPath(rb.position, player.position, OnPathComplete);
+        } else
+        {
+            Vector2 vec = Random.insideUnitCircle * 25f;
+            if (seeker.IsDone())
+                seeker.StartPath(rb.position, player.position + new Vector3(vec.x, 0f, vec.y), OnPathComplete);
+        }
     }
 
     void OnPathComplete(Path p)
@@ -60,7 +67,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         Vector3 direction = ((Vector3) path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector3 force = direction * speed * Time.deltaTime;
+        Vector3 force = direction * this.GetComponent<EnemyScript>().speed * Time.deltaTime;
 
         rb.AddForce(force);
 

@@ -7,7 +7,6 @@ public class PlayerScript : MonoBehaviour
 {
     private float horizontalInput = 0f;
     private float verticalInput = 0f;
-    private float movementSpeed = 10f;
     private GameObject camera;
     public GameObject bullet;
     private GameObject firePoint;
@@ -15,22 +14,36 @@ public class PlayerScript : MonoBehaviour
     public GameObject healthBarPrefab;
     private GameObject healthBar;
     private Slider slider;
-    private float health;
-    private float maxHealth;
     private float nextHit;
     private bool collided;
+    public Text ammoDisplay;
+    bool isReloading = false;
+
+    private float movementSpeed;
+    private float health;
+    private float maxHealth;
+    public float damage;
+    private float enemyDamage;
+    public int ammo;
+    public int restAmmo;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Get bullet child
-        firePoint = gameObject.transform.GetChild(0).gameObject;
         health = 100;
         maxHealth = 100;
+        movementSpeed = 10f;
+        damage = 25;
+        ammo = 30;
+        restAmmo = 120;
+
+        // Get bullet child
+        firePoint = gameObject.transform.GetChild(0).gameObject;
         nextHit = Time.time;
         healthBar = Instantiate(healthBarPrefab);
         slider = (Slider)GameObject.FindObjectsOfType(typeof(Slider))[0];
         FollowHealthBar();
+        ammoDisplay.text = ammo.ToString() + "/" + restAmmo.ToString();
     }
 
     // Update is called once per frame
@@ -59,13 +72,22 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             float enter;
-            if (playerPlane.Raycast(ray, out enter))
+            if (playerPlane.Raycast(ray, out enter) && ammo > 0 && !isReloading)
             {
                 GameObject bulletCopy = Instantiate(bullet, firePoint.transform.position, Quaternion.identity);
                 var hitPoint = ray.GetPoint(enter);
                 var mouseDir = hitPoint - gameObject.transform.position;
                 mouseDir = mouseDir.normalized;
                 bulletCopy.GetComponent<Rigidbody>().AddForce(mouseDir * thrust);
+                ammo--;
+                ammoDisplay.text = ammo.ToString() + "/" + restAmmo.ToString();
+                if (ammo == 0 && restAmmo > 0)
+                {
+                    isReloading = true;
+                    Invoke("ResetReload", 2);
+                    ammo += 30;
+                    restAmmo -= 30;
+                }
             }
         }
 
@@ -80,6 +102,12 @@ public class PlayerScript : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    void ResetReload()
+    {
+        isReloading = false;
+        ammoDisplay.text = ammo.ToString() + "/" + restAmmo.ToString();
     }
 
     void FixedUpdate()
@@ -100,6 +128,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.gameObject.name == "Enemy(Clone)")
         {
+            enemyDamage = other.gameObject.GetComponent<EnemyScript>().damage;
             collided = true;
         }
     }
@@ -114,7 +143,7 @@ public class PlayerScript : MonoBehaviour
 
     void CalculateHealth()
     {
-        health = health - 25;
+        health = health - enemyDamage;
         slider.value = health / maxHealth;
     }
 }

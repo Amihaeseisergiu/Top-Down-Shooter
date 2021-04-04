@@ -5,20 +5,25 @@ using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour
 {
-    private float movementSpeed = 0.15f;
     private Transform playerTransform;
     public GameObject healthBarPrefab;
     private GameObject healthBar;
-    private float health;
-    private float maxHealth;
     private Slider slider;
     public GameObject impactParticle;
+
+    private float health;
+    private float maxHealth;
+    public float damage;
+    public float speed;
 
     // Start is called before the first frame update
     void Start()
     {
         health = 100;
         maxHealth = 100;
+        damage = 25;
+        speed = 2500f;
+
         playerTransform = GameObject.Find("Player").GetComponent<Transform>();
         impactParticle = GameObject.Find("Blood");
         healthBar = Instantiate(healthBarPrefab);
@@ -66,7 +71,7 @@ public class EnemyScript : MonoBehaviour
 
     void CalculateHealth()
     {
-        health = health - 25;
+        health = health - GameObject.Find("Player").GetComponent<PlayerScript>().damage;
         slider.value = health / maxHealth;
     }
 }
