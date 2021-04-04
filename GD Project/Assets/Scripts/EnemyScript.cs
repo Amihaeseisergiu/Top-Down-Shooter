@@ -11,18 +11,30 @@ public class EnemyScript : MonoBehaviour
     private Slider slider;
     public GameObject impactParticle;
 
-    private float health;
-    private float maxHealth;
+    public float health;
+    public float maxHealth;
     public float damage;
     public float speed;
+    public float randChosen;
+
+    public bool isDestroyed;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = 100;
-        maxHealth = 100;
-        damage = 25;
-        speed = 2500f;
+        randChosen = Random.Range(-0.5f, 1.0f);
+
+        health = 100 + randChosen * 190;
+        maxHealth = 100 + randChosen * 190;
+        damage = 25 + randChosen * 45;
+        speed = 2500f - randChosen * 2000;
+        gameObject.transform.localScale += new Vector3(randChosen, randChosen, randChosen);
+
+        if(randChosen > 0.8f)
+        {
+            var color = gameObject.GetComponent<Renderer>().material.GetColor("_Color");
+            gameObject.GetComponent<Renderer>().material.SetColor("_Color", new Color(color.r * 0.5f, color.g * 0.5f, color.b * 0.5f));
+        }
 
         playerTransform = GameObject.Find("Player").GetComponent<Transform>();
         impactParticle = GameObject.Find("Blood");
@@ -46,7 +58,7 @@ public class EnemyScript : MonoBehaviour
     {
         healthBar.transform.position = transform.position;
         Vector3 pos = transform.position;
-        pos.z = pos.z + 1.5f;
+        pos.z = pos.z + gameObject.transform.localScale.z;
         healthBar.transform.position = pos;
     }
 
@@ -66,6 +78,26 @@ public class EnemyScript : MonoBehaviour
 
             ContactPoint contact = other.contacts[0];
             Instantiate(impactParticle, contact.point, Quaternion.FromToRotation(Vector3.up, contact.normal));
+        }
+        else if(other.gameObject.name == "Enemy(Clone)" && !other.gameObject.GetComponent<EnemyScript>().isDestroyed && other.gameObject.GetComponent<EnemyScript>().randChosen > 0.8f)
+        {
+            Vector3 newSize = other.gameObject.transform.localScale + gameObject.transform.localScale;
+            if (newSize.x < 5.0f && newSize.y < 5.0f && newSize.z < 5.0f)
+            {
+                other.gameObject.transform.localScale += gameObject.transform.localScale;
+            }
+
+            other.gameObject.GetComponent<EnemyScript>().maxHealth += maxHealth;
+            other.gameObject.GetComponent<EnemyScript>().health += health;
+            other.gameObject.GetComponent<EnemyScript>().damage += damage;
+            other.gameObject.GetComponent<EnemyScript>().speed += speed / 2;
+
+            var color = other.gameObject.GetComponent<Renderer>().material.GetColor("_Color");
+            other.gameObject.GetComponent<Renderer>().material.SetColor("_Color", new Color(color.r * 0.9f, color.g * 0.9f, color.b * 0.9f));
+
+            isDestroyed = true;
+            Destroy(gameObject);
+            Destroy(healthBar);
         }
     }
 
