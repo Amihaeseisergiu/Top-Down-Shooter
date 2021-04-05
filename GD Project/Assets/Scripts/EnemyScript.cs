@@ -27,7 +27,7 @@ public class EnemyScript : MonoBehaviour
         health = 100 + randChosen * 190;
         maxHealth = 100 + randChosen * 190;
         damage = 25 + randChosen * 45;
-        speed = 2500f - randChosen * 2000;
+        speed = 2500f;
         gameObject.transform.localScale += new Vector3(randChosen, randChosen, randChosen);
 
         if(randChosen > 0.8f)
@@ -56,6 +56,7 @@ public class EnemyScript : MonoBehaviour
 
     void FollowHealthBar()
     {
+        slider.value = health / maxHealth;
         healthBar.transform.position = transform.position;
         Vector3 pos = transform.position;
         pos.z = pos.z + gameObject.transform.localScale.z;

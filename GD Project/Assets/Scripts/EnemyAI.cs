@@ -29,13 +29,14 @@ public class EnemyAI : MonoBehaviour
     void UpdatePath()
     {
         float dist = Vector3.Distance(rb.position, player.position);
-        if(dist <= 7.5f)
+        if (dist <= 7.5f)
         {
             if (seeker.IsDone())
                 seeker.StartPath(rb.position, player.position, OnPathComplete);
-        } else
+        }
+        else
         {
-            Vector2 vec = Random.insideUnitCircle * 25f;
+            Vector2 vec = Random.insideUnitCircle * dist * 1.25f;
             if (seeker.IsDone())
                 seeker.StartPath(rb.position, player.position + new Vector3(vec.x, 0f, vec.y), OnPathComplete);
         }

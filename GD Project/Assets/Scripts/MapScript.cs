@@ -7,6 +7,7 @@ public class MapScript : MonoBehaviour
 
     public GameObject enemy;
     public GameObject ammoSprite;
+    public GameObject heartSprite;
     private GameObject player;
     private Transform playerPos;
     // Start is called before the first frame update
@@ -16,6 +17,7 @@ public class MapScript : MonoBehaviour
         playerPos = player.transform;
         StartCoroutine(spawnEnemies());
         StartCoroutine(spawnBullets());
+        StartCoroutine(spawnHearts());
     }
 
     // Update is called once per frame
@@ -29,7 +31,7 @@ public class MapScript : MonoBehaviour
     {
         while (player != null)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(5);
             var spawned = false;
             while (!spawned && playerPos != null)
             {
@@ -49,9 +51,21 @@ public class MapScript : MonoBehaviour
     {
         while(player != null)
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(20);
             var theNewPos = new Vector3(Random.Range(-50f, 50f), 0.001f, Random.Range(-50f, 50f));
             GameObject bullets = Instantiate(ammoSprite);
+            bullets.transform.position = theNewPos;
+
+        }
+    }
+
+    IEnumerator spawnHearts()
+    {
+        while (player != null)
+        {
+            yield return new WaitForSeconds(15);
+            var theNewPos = new Vector3(Random.Range(-50f, 50f), 0.001f, Random.Range(-50f, 50f));
+            GameObject bullets = Instantiate(heartSprite);
             bullets.transform.position = theNewPos;
 
         }

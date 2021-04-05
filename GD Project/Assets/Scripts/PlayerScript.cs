@@ -118,6 +118,7 @@ public class PlayerScript : MonoBehaviour
 
     void FollowHealthBar()
     {
+        slider.value = health / maxHealth;
         healthBar.transform.position = transform.position;
         Vector3 pos = transform.position;
         pos.z = pos.z + 1.5f;
@@ -142,6 +143,15 @@ public class PlayerScript : MonoBehaviour
                 ammo += 60;
                 restAmmo -= 60;
             }
+        } else if(other.gameObject.name == "Heart(Clone)")
+        {
+            Destroy(other.gameObject);
+            health += maxHealth / 10;
+            if(health > maxHealth)
+            {
+                health = maxHealth;
+            }
+            slider.value = health / maxHealth;
         }
     }
 
