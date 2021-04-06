@@ -27,7 +27,7 @@ public class EnemyScript : MonoBehaviour
         health = 100 + randChosen * 190;
         maxHealth = 100 + randChosen * 190;
         damage = 25 + randChosen * 45;
-        speed = 2500f;
+        speed = 3000f;
         gameObject.transform.localScale += new Vector3(randChosen, randChosen, randChosen);
 
         if(randChosen > 0.8f)
@@ -70,6 +70,7 @@ public class EnemyScript : MonoBehaviour
             CalculateHealth();
             if (health <= 0)
             {
+                GameObject.Find("Player").GetComponent<PlayerScript>().enemiesKilled++;
                 Destroy(healthBar);
                 Destroy(gameObject);
             }

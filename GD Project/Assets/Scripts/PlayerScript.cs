@@ -18,6 +18,11 @@ public class PlayerScript : MonoBehaviour
     private bool collided;
     public Text ammoDisplay;
     bool isReloading = false;
+    public Slider heartSlider;
+    public Slider damageSlider;
+    public Text pointsDisplay;
+    public int enemiesKilled;
+    private int points;
 
     private float movementSpeed;
     private float health;
@@ -36,6 +41,8 @@ public class PlayerScript : MonoBehaviour
         damage = 25;
         ammo = 60;
         restAmmo = 240;
+
+        enemiesKilled = 0;
 
         // Get bullet child
         firePoint = gameObject.transform.GetChild(0).gameObject;
@@ -89,6 +96,33 @@ public class PlayerScript : MonoBehaviour
                     restAmmo -= 60;
                 }
             }
+        } else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (points > 0 && heartSlider.value < 1f)
+            {
+                heartSlider.value += 0.1f;
+                maxHealth += 20;
+                health += 20;
+                slider.value = health / maxHealth;
+                points--;
+                pointsDisplay.text = points.ToString() + " Points";
+            }
+        } else if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if (points > 0 && damageSlider.value < 1f)
+            {
+                damageSlider.value += 0.1f;
+                damage += 5;
+                points--;
+                pointsDisplay.text = points.ToString() + " Points";
+            }
+        }
+
+        if(enemiesKilled == 5)
+        {
+            points++;
+            pointsDisplay.text = points.ToString() + " Points";
+            enemiesKilled = 0;
         }
 
         //Continuous enemy hits
