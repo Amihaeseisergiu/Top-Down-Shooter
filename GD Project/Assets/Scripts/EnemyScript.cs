@@ -27,7 +27,7 @@ public class EnemyScript : MonoBehaviour
         health = 100 + randChosen * 190;
         maxHealth = 100 + randChosen * 190;
         damage = 25 + randChosen * 45;
-        speed = 3000f;
+        speed = 2750f;
         gameObject.transform.localScale += new Vector3(randChosen, randChosen, randChosen);
 
         if(randChosen > 0.8f)
@@ -65,7 +65,7 @@ public class EnemyScript : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.name == "Bullet(Clone)")
+        if (other.gameObject.name.Contains("Bullet"))
         {
             CalculateHealth();
             if (health <= 0)
@@ -105,7 +105,7 @@ public class EnemyScript : MonoBehaviour
 
     void CalculateHealth()
     {
-        health = health - GameObject.Find("Player").GetComponent<PlayerScript>().damage;
+        health = health - GameObject.Find("Player").GetComponent<PlayerScript>().amplifiedDamage;
         slider.value = health / maxHealth;
     }
 }
