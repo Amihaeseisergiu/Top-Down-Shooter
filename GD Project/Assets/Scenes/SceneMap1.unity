@@ -14274,6 +14274,7 @@ MonoBehaviour:
   pointsDisplay: {fileID: 831985929}
   enemiesKilled: 0
   damage: 0
+  amplifiedDamage: 0
   ammo: 0
   restAmmo: 0
 --- !u!54 &2130011436

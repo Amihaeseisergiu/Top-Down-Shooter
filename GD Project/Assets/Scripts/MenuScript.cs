@@ -5,14 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
-    public void PlayGame()
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void Map1()
     {
         SceneManager.LoadScene("SceneMap1");
     }
 
-    public void MainMenu()
+    public void Map2()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("SceneMap2");
     }
 
     public void QuitGame()

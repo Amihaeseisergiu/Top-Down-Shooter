@@ -19,8 +19,6 @@ public class PlayerScript : MonoBehaviour
     public GameObject healthBarPrefab;
     private GameObject healthBar;
     private Slider slider;
-    private float nextHit;
-    private bool collided;
     public Text ammoDisplay;
     bool isReloading = false;
     bool isFiring = false;
@@ -35,7 +33,6 @@ public class PlayerScript : MonoBehaviour
     private float maxHealth;
     public float damage;
     public float amplifiedDamage;
-    private float enemyDamage;
     public int ammo;
     public int restAmmo;
 
@@ -59,7 +56,6 @@ public class PlayerScript : MonoBehaviour
         firePoint = gameObject.transform.GetChild(0).gameObject;
         firePoint2 = gameObject.transform.GetChild(2).gameObject;
         firePoint3 = gameObject.transform.GetChild(1).gameObject;
-        nextHit = Time.time;
         healthBar = Instantiate(healthBarPrefab);
         slider = (Slider)GameObject.FindObjectsOfType(typeof(Slider))[0];
         FollowHealthBar();
@@ -114,8 +110,8 @@ public class PlayerScript : MonoBehaviour
                     GameObject bulletCopy = Instantiate(bulletShotgun, firePoint.transform.position, Quaternion.identity);
                     GameObject bulletCopy2 = Instantiate(bulletShotgun, firePoint2.transform.position, Quaternion.identity);
                     GameObject bulletCopy3 = Instantiate(bulletShotgun, firePoint3.transform.position, Quaternion.identity);
-                    var mouseDir2 = Quaternion.AngleAxis(-25, Vector3.up) * mouseDir;
-                    var mouseDir3 = Quaternion.AngleAxis(+25, Vector3.up) * mouseDir;
+                    var mouseDir2 = Quaternion.AngleAxis(-10, Vector3.up) * mouseDir;
+                    var mouseDir3 = Quaternion.AngleAxis(+10, Vector3.up) * mouseDir;
                     bulletCopy.GetComponent<Rigidbody>().AddForce(mouseDir * thrust);
                     bulletCopy2.GetComponent<Rigidbody>().AddForce(mouseDir2 * thrust);
                     bulletCopy3.GetComponent<Rigidbody>().AddForce(mouseDir3 * thrust);
@@ -212,17 +208,6 @@ public class PlayerScript : MonoBehaviour
             pointsDisplay.text = points.ToString() + " Points";
             enemiesKilled = 0;
         }
-
-        //Continuous enemy hits
-        if (collided && nextHit <= Time.time)
-        {
-            CalculateHealth();
-            nextHit = Time.time + 1.0f;
-            if (health <= 0)
-            {
-                SceneManager.LoadScene("DeadScreen");
-            }
-        }
     }
 
     void ResetReload()
@@ -253,11 +238,7 @@ public class PlayerScript : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.name == "Enemy(Clone)")
-        {
-            enemyDamage = other.gameObject.GetComponent<EnemyScript>().damage;
-            collided = true;
-        } else if (other.gameObject.name == "Ammo(Clone)")
+        if (other.gameObject.name == "Ammo(Clone)")
         {
             Destroy(other.gameObject);
             restAmmo += 120;
@@ -279,19 +260,22 @@ public class PlayerScript : MonoBehaviour
             }
             slider.value = health / maxHealth;
         }
-    }
-
-    void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.name == "Enemy(Clone)")
+        else if (other.gameObject.name.Contains("Bullet"))
         {
-            collided = false;
+            takeHit(20);
+
+            ContactPoint contact = other.contacts[0];
+            Instantiate(GameObject.Find("Blood"), contact.point + (gameObject.transform.position - contact.point).normalized * 2f, Quaternion.FromToRotation(Vector3.up, contact.normal * -1));
         }
     }
 
-    void CalculateHealth()
+    public void takeHit(float damage)
     {
-        health = health - enemyDamage;
-        slider.value = health / maxHealth;
+        health = health - damage;
+
+        if (health <= 0)
+        {
+            SceneManager.LoadScene("DeadScreen");
+        }
     }
 }

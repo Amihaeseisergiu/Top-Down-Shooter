@@ -29,16 +29,35 @@ public class EnemyAI : MonoBehaviour
     void UpdatePath()
     {
         float dist = Vector3.Distance(rb.position, player.position);
-        if (dist <= 7.5f)
+
+        if(gameObject.GetComponent<EnemyScript>().type != "shooter")
         {
-            if (seeker.IsDone())
-                seeker.StartPath(rb.position, player.position, OnPathComplete);
+            if (dist <= 7.5f)
+            {
+                if (seeker.IsDone())
+                    seeker.StartPath(rb.position, player.position, OnPathComplete);
+            }
+            else
+            {
+                Vector2 vec = Random.insideUnitCircle * dist * 1.25f;
+                if (seeker.IsDone())
+                    seeker.StartPath(rb.position, player.position + new Vector3(vec.x, 0f, vec.y), OnPathComplete);
+            }
         }
         else
         {
-            Vector2 vec = Random.insideUnitCircle * dist * 1.25f;
-            if (seeker.IsDone())
-                seeker.StartPath(rb.position, player.position + new Vector3(vec.x, 0f, vec.y), OnPathComplete);
+            if (dist <= 10.0f)
+            {
+                gameObject.transform.LookAt(player.position);
+                GameObject bulletCopy = Instantiate((GameObject)Resources.Load("Bullet"), gameObject.transform.position + gameObject.transform.forward * gameObject.transform.localScale.x, Quaternion.identity);
+                bulletCopy.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * 200.0f);
+            }
+            else
+            {
+                Vector2 vec = Random.insideUnitCircle * dist * 1.25f;
+                if (seeker.IsDone())
+                    seeker.StartPath(rb.position, player.position + new Vector3(vec.x, 0f, vec.y), OnPathComplete);
+            }
         }
     }
 
