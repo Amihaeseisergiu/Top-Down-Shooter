@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -132,8 +133,7 @@ public class PlayerScript : MonoBehaviour
             nextHit = Time.time + 1.0f;
             if (health <= 0)
             {
-                Destroy(healthBar);
-                Destroy(gameObject);
+                SceneManager.LoadScene("DeadScreen");
             }
         }
     }
