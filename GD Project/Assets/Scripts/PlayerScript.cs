@@ -104,7 +104,7 @@ public class PlayerScript : MonoBehaviour
                     GameObject bulletCopy = Instantiate(bulletPistol, firePoint.transform.position, Quaternion.identity);
                     bulletCopy.GetComponent<Rigidbody>().AddForce(mouseDir * thrust);
                     isFiring = true;
-                    Invoke("ResetFire", 0.25f);
+                    Invoke("ResetFire", 0.5f);
                 } else if(weaponSelected == 3)
                 {
                     GameObject bulletCopy = Instantiate(bulletShotgun, firePoint.transform.position, Quaternion.identity);
@@ -117,7 +117,7 @@ public class PlayerScript : MonoBehaviour
                     bulletCopy3.GetComponent<Rigidbody>().AddForce(mouseDir3 * thrust);
 
                     isFiring = true;
-                    Invoke("ResetFire", 0.5f);
+                    Invoke("ResetFire", 1f);
                 }
                 ammo--;
                 ammoDisplay.text = ammo.ToString() + "/" + restAmmo.ToString();

@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
+    bool isFiring = false;
 
     Seeker seeker;
     Rigidbody rb;
@@ -46,11 +47,13 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            if (dist <= 10.0f)
+            if (dist <= 10.0f && !isFiring)
             {
                 gameObject.transform.LookAt(player.position);
                 GameObject bulletCopy = Instantiate((GameObject)Resources.Load("Bullet"), gameObject.transform.position + gameObject.transform.forward * gameObject.transform.localScale.x, Quaternion.identity);
                 bulletCopy.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * 200.0f);
+                isFiring = true;
+                Invoke("ResetFire", 1f);
             }
             else
             {
@@ -97,5 +100,10 @@ public class EnemyAI : MonoBehaviour
         {
             currentWaypoint++;
         }
+    }
+
+    void ResetFire()
+    {
+        isFiring = false;
     }
 }
