@@ -1,0 +1,3 @@
+-Added a new playable map
+-Added textures to both the new map and the previous one
+-Maps now have a surrounding fence so both enemies and players can't "escape" the map
