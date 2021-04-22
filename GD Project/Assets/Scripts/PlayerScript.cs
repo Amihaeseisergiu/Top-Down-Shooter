@@ -267,6 +267,13 @@ public class PlayerScript : MonoBehaviour
             ContactPoint contact = other.contacts[0];
             Instantiate(GameObject.Find("Blood"), contact.point + (gameObject.transform.position - contact.point).normalized * 2f, Quaternion.FromToRotation(Vector3.up, contact.normal * -1));
         }
+        else if (other.gameObject.name.Contains("ObstacleThatDealsDamage"))
+        {
+            takeHit(5);
+
+            ContactPoint contact = other.contacts[0];
+            Instantiate(GameObject.Find("Blood"), contact.point + (gameObject.transform.position - contact.point).normalized * 2f, Quaternion.FromToRotation(Vector3.up, contact.normal * -1));
+        }
     }
 
     public void takeHit(float damage)
