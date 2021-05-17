@@ -1,0 +1,3 @@
+-Added new textures
+=Added a new obstacle type that deals damage when hit initially
+-Changed the overall layout of obstacles; added more obstacles
