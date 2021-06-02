@@ -20,6 +20,11 @@ public class MenuScript : MonoBehaviour
         SceneManager.LoadScene("SceneMap2");
     }
 
+    public void Map3()
+    {
+        SceneManager.LoadScene("SceneMap3");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
