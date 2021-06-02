@@ -1,0 +1,4 @@
+-Added a 3rd new map
+-The new map should be harder to play
+-The new map is smaller and has more obstacles
+-The obstacles are closer together to each other making avoiding them harder.
